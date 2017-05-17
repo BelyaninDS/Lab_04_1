@@ -38,23 +38,55 @@ void print_in_binary(void* data,size_t size) {
 //--| \/ |----/__\----|---| \ |---------------------------------------------------------
 //--|    |---/    \---|---|  \|---------------------------------------------------------
 
+int check_operation_input(char operation){
+    if((operation == '&')||(operation == '|')||(operation == '^'))
+        return 0;
+    else
+        cerr<<"\nError! Wrong operation";
+        return 1;
+}
+
+
+
+
+
 int main(){
 
-    uint8_t u8 = 42;
-    uint16_t u16 = 42;
-    uint32_t u32 = 42;
+    uint16_t first_op,second_op,result;
+    char operation;
 
-    print_in_binary(&u8,sizeof(u8));
-    print_in_binary(&u16,sizeof(u16));
-    print_in_binary(&u32,sizeof(u32));
+    cin>>first_op>>operation>>second_op;
 
-    cout<<'\n';
+    if(check_operation_input(operation) == 1) return 0;
 
-    print_in_hex(&u8,sizeof(u8));
-    print_in_hex(&u16,sizeof(u16));
-    print_in_hex(&u32,sizeof(u32));
+    switch(operation){
+        case '&':
+            result = first_op & second_op;
+            break;
+        case '|':
+            result = first_op | second_op;
+            break;
+        case '^':
+            result = first_op ^ second_op;
+            break;
+        default:{};
+    }
 
+    cout<<"\nHEX:\n";
 
+    print_in_hex(&first_op,sizeof(first_op));
+    cout<<" "<<operation<<" ";
+    print_in_hex(&second_op,sizeof(second_op));
+    cout<<" = ";
+    print_in_hex(&result,sizeof(result));
+
+    cout<<"\n\nBIN:\n";
+
+    print_in_binary(&first_op,sizeof(first_op));
+    cout<<" "<<operation<<" ";
+    print_in_binary(&second_op,sizeof(second_op));
+    cout<<" = ";
+    print_in_binary(&result,sizeof(result));
 
     return 0;
 }
