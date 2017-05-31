@@ -12,7 +12,7 @@ char bit_digit(uint8_t byte,uint8_t bit){
 
 
 void print_in_binary(uint8_t byte){
-    for(int i=7;i>0;i--)
+    for(int i=7;i>=0;i--)
         cout<<bit_digit(byte,i);
 }
 
