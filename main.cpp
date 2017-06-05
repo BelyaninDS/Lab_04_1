@@ -40,8 +40,15 @@ int main() {
 //-------------------------
 
     std::cout<<"array adress: "<<&group
-             <<"\narray size: "<<sizeof(group)
-             <<"\n\n3rd element details: ";
+             <<"\narray size: "<<sizeof(group);
+
+    for(int i=0;i<3;i++){
+        std::cout<<"\n\nElement "<<i+1
+                 <<"\n\tAdress: "<<&group[i]
+                 <<"\n\tSize: "<<sizeof(group[i]);
+    }
+
+    std::cout<<"\n\n3rd element details: ";
 
 
 
@@ -82,9 +89,13 @@ int main() {
     std::cout<<"\n\t\tBIN: ";
         print_in_binary(&group[2].prefect,sizeof(&group[2].prefect));
 
-    std::cout<<"\n988\toffset: "<<offsetof(Student,prefect)<<"\n\tsize: "<<sizeof(group[2].prefect);
+    std::cout<<"\n\toffset: "<<offsetof(Student,prefect)<<"\n\tsize: "<<sizeof(group[2].prefect)<<"\n\n";
 
-
+    for (int i=0;i<3;++i)
+    {
+        print_in_hex(&(group[i]), sizeof(Student));
+        std::cout<<"\n\n";
+    }
 
 /*
     std::cout<<"enter_year: \n\t"<<&group[2].enter_year<<std::endl;
